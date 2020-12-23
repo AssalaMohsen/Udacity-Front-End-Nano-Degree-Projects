@@ -1,0 +1,17 @@
+{
+  "name": "weather-journal-app",
+  "version": "1.0.0",
+  "description": "'fetch_weather_data_using_API'",
+  "main": "server.js",
+  "scripts": {
+    "test": "test.js",
+    "start": "node server.js"
+  },
+  "author": "Assala Mohsen",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
