@@ -122,6 +122,41 @@ section {
     opacity: 0 !important;
 }
 
+.scroll-to-top-button {
+    display: inline-block;
+    bottom: 2em;
+    right: 2em;
+    z-index: 10;
+    position: fixed;
+    pointer-events: all;
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 3rem;
+    text-align: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    padding: 0.25rem;
+    border: 1px solid #111f2e;
+    color: #fff;
+    background-color: #040b0c;
+    transition: transform 80ms ease-in;
+}
+
+.scroll-to-top-button:hover,
+.scroll-to-top-button:focus {
+    transform: scale(1.1);
+}
+
+.scroll-to-top-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px;
+}
+
+.scroll-to-top-button.hide {
+    display: none;
+}
+
 
 /* Footer Styles */
 

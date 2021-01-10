@@ -34,6 +34,42 @@ function removefromSections(id) {
     }
 }
 
+function isTopSectionInViewport(el) {
+    // get the coordinates of the element box from the viewport
+    const rect = el.getBoundingClientRect();
+    // return true if the element top is near the top of the viewport, false otherwise
+    return (
+        rect.top >= 0 &&
+        // 0.4 works well across devices without overlapping sections
+        rect.top <=
+        0.4 * (window.innerHeight || document.documentElement.clientHeight)
+    );
+}
+
+function create_scroll_to_top_btn() {
+    const htmlTextToAdd = `<a href="#" class="scroll-to-top-button hide">Up</a>`;
+    document.body.insertAdjacentHTML("afterbegin", htmlTextToAdd);
+}
+
+function show_scroll_to_top_btn() {
+
+    const btn = document.querySelector(".scroll-to-top-button");
+    if (window.pageYOffset <= 0.6 * window.innerHeight) {
+        btn.classList.add("hide");
+    } else {
+        btn.classList.remove("hide");
+        btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            // smooth scroll to top of page
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth"
+            });
+        });
+    }
+}
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -48,10 +84,12 @@ function buildNav() {
     let sections = document.getElementsByTagName('section');
     // loop through sections to add each to navbar list
     for (let section of sections) {
+        //get section titlle
+        let title = section.getElementsByTagName('h2')[0].textContent;
         // create a list element for the section
         const newLi = document.createElement('li');
         // create anchor element for the section
-        htmlTextToAdd = `<a href='#${section.id}' class="menu__link">${section.id}</a>`;
+        htmlTextToAdd = `<a href='#${section.id}' class="menu__link">${title}</a>`;
         // append anchor element to link element
         newLi.insertAdjacentHTML('afterbegin', htmlTextToAdd);
         // append link to navbar
@@ -75,6 +113,8 @@ function addActiveToSection() {
         timer = setTimeout(function() {
             navbarmenu.classList.add("hide");
         }, 10000);
+
+        showBtnUp();
         /*loop through sectionWithNavbarItem to add active class to the section in viewport
         and add active_link class to its navbar item and remove both for other sections*/
         for (let sectionWithNavbarItem of sectionsWithNavbarItems) {
@@ -92,8 +132,9 @@ function scrollToAnchorId() {
     //get the navbar links
     const links = document.getElementsByClassName('menu__link');
     //loop through the links to add event listner for click event 
+    i = 1;
     for (let link of links) {
-        const section = document.getElementById(link.textContent);
+        const section = document.getElementById('section' + i);
         link.addEventListener('click', function(event) {
             //prevent default behavior
             event.preventDefault();
@@ -103,6 +144,7 @@ function scrollToAnchorId() {
                 behavior: 'smooth',
             });
         });
+        i++;
     }
 }
 
@@ -114,6 +156,8 @@ function scrollToAnchorId() {
 
 // Build menu 
 buildNav();
+// Create the scroll to top button
+createBtnUp();
 // Scroll to section on link click
 scrollToAnchorId();
 // Set sections as active
