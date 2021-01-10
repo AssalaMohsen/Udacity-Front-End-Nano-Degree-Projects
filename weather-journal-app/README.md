@@ -1,14 +1,15 @@
 # Weather-Journal App Project
+Udacity Front-End Web Developer Nano-degree - Web APIs and Asynchronous Applications (Project-3): Weather-Journal App
 
 ## Overview
 This project is an implementation of an asynchronous web app that uses Web API and user data to dynamically update the UI. 
 
-## Instructions
-You will need to install the npm packages used in this app. Open the terminal and change to the directory location of this app. Run the following commands:
-- npm install express
-- npm install cors
-- npm install body-parser
+## Install
+Run the command 'npm install' to install required dependencies (npm install express, npm install body-parser).
 
-## Extras
-If you are interested in testing your code as you go, you can use tests.js as a template for writing and running some basic tests for your code.
+## Start
+The project can be run by running the command "node server.js" in the root directory and then opening http://localhost:8000/ in browser.
+
+
+
 
