@@ -114,7 +114,7 @@ function addActiveToSection() {
             navbarmenu.classList.add("hide");
         }, 10000);
 
-        showBtnUp();
+        show_scroll_to_top_btn();
         /*loop through sectionWithNavbarItem to add active class to the section in viewport
         and add active_link class to its navbar item and remove both for other sections*/
         for (let sectionWithNavbarItem of sectionsWithNavbarItems) {
@@ -157,7 +157,7 @@ function scrollToAnchorId() {
 // Build menu 
 buildNav();
 // Create the scroll to top button
-createBtnUp();
+create_scroll_to_top_btn();
 // Scroll to section on link click
 scrollToAnchorId();
 // Set sections as active
